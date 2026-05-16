@@ -1,0 +1,23 @@
+# Laravel
+core/vendor/
+core/node_modules/
+core/.env
+core/storage/logs/*.log
+core/storage/framework/cache/data/*
+core/storage/framework/sessions/*
+core/storage/framework/views/*
+core/bootstrap/cache/*.php
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Installer (can re-run if needed)
+# install/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+install/
+core/scripts/
