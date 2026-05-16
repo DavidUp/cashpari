@@ -10,7 +10,7 @@ RUN curl -fsSLo /usr/local/bin/supercronic \
     && chmod +x /usr/local/bin/supercronic
 
 # Copy crontab
-COPY crontab /app/crontab
+COPY cron/crontab /app/crontab
 
 # Run supercronic with the crontab
 CMD ["supercronic", "/app/crontab"]
