@@ -1,0 +1,27 @@
+# BetLab Cron Jobs
+# APP_URL must be set as environment variable in Railway
+# Format: minute hour day month weekday command
+
+# Fetch Leagues - Every 12 hours
+0 */12 * * * curl -sf --max-time 60 "${APP_URL}/cron/fetch-leagues" -o /dev/null && echo "[OK] fetch-leagues" || echo "[FAIL] fetch-leagues"
+
+# Fetch Games - Every 10 minutes
+*/10 * * * * curl -sf --max-time 60 "${APP_URL}/cron/fetch-games" -o /dev/null && echo "[OK] fetch-games" || echo "[FAIL] fetch-games"
+
+# Fetch Odds - Every 1 minute
+* * * * * curl -sf --max-time 55 "${APP_URL}/cron/fetch-odds" -o /dev/null && echo "[OK] fetch-odds" || echo "[FAIL] fetch-odds"
+
+# Fetch In-Play Odds - Every 1 minute
+* * * * * curl -sf --max-time 55 "${APP_URL}/cron/fetch-in-play-odds" -o /dev/null && echo "[OK] fetch-in-play-odds" || echo "[FAIL] fetch-in-play-odds"
+
+# Enable Games to Bet - Every 5 minutes
+*/5 * * * * curl -sf --max-time 60 "${APP_URL}/cron/set-open-for-betting" -o /dev/null && echo "[OK] set-open-for-betting" || echo "[FAIL] set-open-for-betting"
+
+# Process Winning Bets - Every 5 minutes
+*/5 * * * * curl -sf --max-time 60 "${APP_URL}/cron/bet-win" -o /dev/null && echo "[OK] bet-win" || echo "[FAIL] bet-win"
+
+# Manage Losing Bets - Every 5 minutes
+*/5 * * * * curl -sf --max-time 60 "${APP_URL}/cron/bet-lose" -o /dev/null && echo "[OK] bet-lose" || echo "[FAIL] bet-lose"
+
+# Manage Refundable Bets - Every 5 minutes
+*/5 * * * * curl -sf --max-time 60 "${APP_URL}/cron/bet-refund" -o /dev/null && echo "[OK] bet-refund" || echo "[FAIL] bet-refund"
