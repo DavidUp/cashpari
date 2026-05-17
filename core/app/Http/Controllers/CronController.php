@@ -317,7 +317,7 @@ class CronController extends Controller {
             // Cron job log data store
             $startTime         = Carbon::parse($startTime);
             $endTime           = Carbon::parse($endTime);
-            $diffInSeconds     = $startTime->diffInSeconds($endTime);
+            $diffInSeconds     = (int) $startTime->diffInSeconds($endTime);
 
             $cronLog              = new CronJobLog();
             $cronLog->cron_job_id = $cronJob->id;
